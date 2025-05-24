@@ -17,5 +17,12 @@
   "previewImage": "",
   "timestamp": "2024-01-10 00:00:00",
   "isEmbeddedPlugin": false,
-  "canUninstall": true
+  "canUninstall": true,
+  "configuration": {
+    "UserConfig": {
+      "type": "Object",
+      "label": "User Configuration",
+      "description": "Per-user pinned collections configuration"
+    }
+  }
 }

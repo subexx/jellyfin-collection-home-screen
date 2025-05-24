@@ -4,6 +4,7 @@
   "description": "A Jellyfin plugin to pin collections to the homescreen",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack --config webpack.config.js --mode development --watch",
     "build": "webpack --config webpack.config.js --mode production && node scripts/package.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
