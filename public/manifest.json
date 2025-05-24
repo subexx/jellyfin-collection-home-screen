@@ -8,11 +8,11 @@
     "overview": "Enhance Jellyfin navigation with pinned collections.",
     "versions": [
       {
-        "version": "1.0.6",
+        "version": "1.0.7",
         "changelog": "Initial release",
         "targetAbi": "10.10.7",
         "sourceUrl": "https://raw.githubusercontent.com/subexx/jellyfin-collection-home-screen/main/public/jellyfin-pin-collections.zip",
-        "checksum": "EE6923D95A4085B89A8FA8C2A1C509F2",
+        "checksum": "083D15A6E10D5C94F7F4D4C59E63DC2B",
         "timestamp": "2025-05-24T00:00:00Z"
       }
     ]
