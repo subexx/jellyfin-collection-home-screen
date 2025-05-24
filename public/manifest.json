@@ -1,18 +1,21 @@
-{
-  "category": "General",
-  "guid": "957adb56-7794-4f75-8b09-3ec1b20977bc",
-  "name": "Pin Collections",
-  "description": "Pin favorite media collections to the Jellyfin homescreen with drag-and-drop functionality.",
-  "owner": "subexx",
-  "overview": "Enhance Jellyfin navigation with pinned collections.",
-  "versions": [
-    {
-      "version": "1.0.0",
-      "changelog": "Initial release",
-      "targetAbi": "10.10.7",
-      "sourceUrl": "https://raw.githubusercontent.com/subexx/jellyfin-collection-home-screen/main/public/pin-collections.zip",
-      "checksum": "957adb56-7794-4f75-8b09-3ec1b20977bc",
-      "timestamp": "2025-05-24T00:00:00Z"
-    }
-  ]
-}
+[
+  {
+    "category": "General",
+    "guid": "957adb56-7794-4f75-8b09-3ec1b20977bc",
+    "name": "Pin Collections",
+    "description": "Pin favorite media collections to the Jellyfin homescreen with drag-and-drop functionality.",
+    "owner": "subexx",
+    "overview": "Enhance Jellyfin navigation with pinned collections.",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "changelog": "Initial release",
+        "targetAbi": "10.10.7",
+        "sourceUrl": "https://raw.githubusercontent.com/subexx/jellyfin-collection-home-screen/main/public/pin-collections.zip",
+        "checksum": "957adb56-7794-4f75-8b09-3ec1b20977bc",
+        "timestamp": "2025-05-24T00:00:00Z"
+      }
+    ]
+  }
+]
+
