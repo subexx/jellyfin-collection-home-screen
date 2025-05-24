@@ -17,11 +17,5 @@
   "previewImage": "",
   "timestamp": "2024-01-10 00:00:00",
   "isEmbeddedPlugin": false,
-  "canUninstall": true,
-  "data": {
-    "defaultPermissions": "abc:users",
-    "storageKey": "pincollections",
-    "dataPath": "/config/data/plugins/pincollections",
-    "persistData": true
-  }
+  "canUninstall": true
 }

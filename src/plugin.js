@@ -13,101 +13,59 @@ import './styles.css';
   // Plugin namespace
   const PinCollections = {
     pinnedCollections: [],
-    storageKey: 'pincollections',
-    dataPath: '/config/data/plugins/pincollections',
     
     // Initialize the plugin
     init: function() {
       console.log('Initializing Pin Collections plugin');
       
-      // Ensure plugin data directory exists with correct permissions
-      this.ensureDataDirectory()
-        .then(() => {
-          // Load saved pinned collections from server storage with retry mechanism
-          this.loadPinnedCollectionsWithRetry();
-          
-          // Register page component for home screen
-          this.registerHomePageComponent();
-          
-          // Add hooks for collection view
-          this.addCollectionHooks();
-          
-          // Register settings page
-          this.registerSettingsPage();
-        })
-        .catch(error => {
-          console.error('Error initializing plugin:', error);
-        });
-    },
-
-    // Ensure data directory exists with correct permissions
-    ensureDataDirectory: function() {
-      return new Promise((resolve, reject) => {
-        try {
-          window.ApiClient.createPluginDirectory(this.storageKey)
-            .then(() => {
-              console.log('Plugin data directory created/verified');
-              resolve();
-            })
-            .catch(error => {
-              console.error('Error creating plugin directory:', error);
-              reject(error);
-            });
-        } catch (error) {
-          console.error('Error ensuring data directory:', error);
-          reject(error);
-        }
-      });
+      // Load saved pinned collections
+      this.loadPinnedCollections();
+      
+      // Register page component for home screen
+      this.registerHomePageComponent();
+      
+      // Add hooks for collection view
+      this.addCollectionHooks();
+      
+      // Register settings page
+      this.registerSettingsPage();
     },
     
-    // Load pinned collections with retry mechanism
-    loadPinnedCollectionsWithRetry: function(retryCount = 0) {
-      const maxRetries = 3;
-      const retryDelay = 2000; // 2 seconds
-
-      window.ApiClient.getUserData(this.storageKey, 'pinnedCollections')
-        .then(data => {
-          if (data) {
-            try {
-              this.pinnedCollections = JSON.parse(data);
-              console.log('Loaded pinned collections:', this.pinnedCollections);
-            } catch (e) {
-              console.error('Error parsing pinned collections:', e);
-              this.pinnedCollections = [];
-            }
-          } else {
-            this.pinnedCollections = [];
-          }
+    // Load pinned collections using Jellyfin's storage
+    loadPinnedCollections: function() {
+      const userId = window.ApiClient.getCurrentUserId();
+      window.ApiClient.getPluginConfiguration(this.getPluginId())
+        .then(config => {
+          const userConfig = config.UserConfig || {};
+          this.pinnedCollections = userConfig[userId] || [];
+          console.log('Loaded pinned collections:', this.pinnedCollections);
         })
         .catch(error => {
           console.error('Error loading pinned collections:', error);
-          if (retryCount < maxRetries) {
-            setTimeout(() => {
-              this.loadPinnedCollectionsWithRetry(retryCount + 1);
-            }, retryDelay);
-          } else {
-            this.pinnedCollections = [];
-          }
+          this.pinnedCollections = [];
         });
     },
     
-    // Save pinned collections with retry mechanism
-    savePinnedCollections: function(retryCount = 0) {
-      const maxRetries = 3;
-      const retryDelay = 2000;
-
-      window.ApiClient.setUserData(this.storageKey, 'pinnedCollections', JSON.stringify(this.pinnedCollections))
+    // Save pinned collections using Jellyfin's storage
+    savePinnedCollections: function() {
+      const userId = window.ApiClient.getCurrentUserId();
+      window.ApiClient.getPluginConfiguration(this.getPluginId())
+        .then(config => {
+          config.UserConfig = config.UserConfig || {};
+          config.UserConfig[userId] = this.pinnedCollections;
+          return window.ApiClient.updatePluginConfiguration(this.getPluginId(), config);
+        })
         .then(() => {
           console.log('Successfully saved pinned collections');
         })
         .catch(error => {
           console.error('Error saving pinned collections:', error);
-          if (retryCount < maxRetries) {
-            setTimeout(() => {
-              this.savePinnedCollections(retryCount + 1);
-            }, retryDelay);
-          }
         });
+    },
+
+    // Get plugin ID
+    getPluginId: function() {
+      return 'PinCollections';
     },
     
     // Register home page component
