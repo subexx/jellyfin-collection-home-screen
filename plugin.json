@@ -1,0 +1,16 @@
+{
+  "id": "PinCollections",
+  "name": "Pin Collections",
+  "description": "Pin your favorite collections to the Jellyfin homescreen",
+  "version": "1.0.0",
+  "owner": "jellyfin",
+  "category": "General",
+  "imageUrl": "https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/icons/icon-transparent.png",
+  "status": "Active",
+  "autoUpdate": true,
+  "type": "UserInterface",
+  "startupType": "Auto",
+  "targetAbi": "10.8.0.0",
+  "assembly": "PinCollections.dll",
+  "changelog": "Initial release"
+}

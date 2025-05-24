@@ -1,0 +1,197 @@
+/* Pin Collections Plugin Styles */
+
+/* Main container for pinned collections */
+.pinned-collections-container {
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+/* Section title */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+}
+
+/* Grid layout for collection cards */
+.pinned-collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Collection card */
+.collection-card {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.collection-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Collection poster */
+.collection-poster {
+  position: relative;
+  padding-bottom: 150%; /* 2:3 aspect ratio */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Collection badge for unplayed items */
+.collection-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--accent, #ff8c00);
+  color: white;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Collection content area */
+.collection-content {
+  padding: 0.75rem;
+}
+
+/* Collection name */
+.collection-name {
+  font-weight: 500;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem;
+}
+
+/* Collection item count */
+.collection-item-count {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Unpin button */
+.unpin-button {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.collection-card:hover .unpin-button {
+  opacity: 1;
+}
+
+.unpin-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Pin button for collection detail page */
+.pin-button-container {
+  margin-top: 1rem;
+}
+
+.pin-button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--primary, #007bff);
+  border-radius: 2rem;
+  color: var(--primary, #007bff);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pin-button:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.pin-button.pinned {
+  background-color: var(--primary, #007bff);
+  color: white;
+}
+
+/* Material icons */
+.material-icons {
+  font-size: 1.2rem;
+}
+
+/* Empty message */
+.empty-message {
+  padding: 2rem;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Sortable styles */
+.sortable-ghost {
+  opacity: 0.4;
+}
+
+.sortable-chosen {
+  box-shadow: 0 0 0 2px var(--primary, #007bff);
+}
+
+.sortable-drag {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pinned-collections-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .collection-name {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .pinned-collections-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+/* Animation for newly pinned collections */
+@keyframes pinned {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.collection-card.newly-pinned {
+  animation: pinned 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
