@@ -11,8 +11,8 @@
         "version": "1.0.1",
         "changelog": "Initial release",
         "targetAbi": "10.10.7",
-        "sourceUrl": "https://raw.githubusercontent.com/subexx/jellyfin-collection-home-screen/main/public/pin-collections.zip",
-        "checksum": "B195A208B2CD3A262852FAD6A3A13BBDBBB3428908958ECC0104340B2138A28C",
+        "sourceUrl": "https://raw.githubusercontent.com/subexx/jellyfin-collection-home-screen/main/public/jellyfin-pin-collections.zip",
+        "checksum": "5bbee1bc6c3f9534b7c5d7398248f1042b8a01577f5a8d816a10532c0cb1f252",
         "timestamp": "2025-05-24T00:00:00Z"
       }
     ]
